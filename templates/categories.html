@@ -1,0 +1,43 @@
+{% extends "main.html" %}
+{% block content %}
+<section class="row">
+			<div class="col-md-12">
+				<h1 class="text-thin header-title text-uppercase">Categories</h1>
+			</div>
+		</section>
+
+  <section class="row">
+<div class = 'flash col-md-12'>
+		      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+</div>
+</section>
+
+<article class="row text-center">
+	{% for category in categories %}
+	<article class="col-md-4">
+		{% if category.name == "Characters" %}
+          <img src="{{ url_for('static', filename='characters.jpg') }}" class="img-responsive" alt="Image 4">
+		{% endif %}
+		{% if category.name == "Vehicles" %}
+					<img src="{{ url_for('static', filename='vehicles.jpg') }}" class="img-responsive" alt="Image 4">
+		{% endif %}
+
+		{% if category.name == "Weapons" %}
+					<img src="{{ url_for('static', filename='weapons.jpg') }}" class="img-responsive" alt="Image 4">
+		{% endif %}
+
+				  <a href = "{{url_for('catalogItems', category_id = category.id)}}"><h3 class="text-uppercase">{{category.name}}</h3><a>
+    </article>
+
+		{% endfor %}
+</article>
+	{% endblock %}

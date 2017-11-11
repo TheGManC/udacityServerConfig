@@ -1,0 +1,39 @@
+{% extends "main.html" %}
+{% block content %}
+	<section class="row">
+		<div class="col-md-12">
+			<h1 class="text-thin text-uppercase">{{ category.name }}</h1>
+		<div class = 'flash'>
+				      {% with messages = get_flashed_messages() %}
+		      {% if messages %}
+
+		        <ul>
+		        {% for message in messages %}
+		            <li> <strong> {{ message }} </strong> </li>
+		        {% endfor %}
+		        </ul>
+		        {% endif %}
+		    {% endwith %}
+
+		</div>
+	</div>
+	</section>
+	<section class="row">
+		<div class="col-md-12">
+			<a href = '{{url_for('newCategoryItem', category_id = category.id) }}'><h2 class="text-featured">Create new Item</h2></a>
+		</div>
+	</section>
+
+	{% if items !=[] %}
+		<article class="row text-center">
+					{% for item in items %}
+							<article class="col-md-4">
+								<h3>{{item.name}}</h3>
+								<p>{{item.description}}</p>
+								<a href='{{url_for('editItem', category_id = category.id, item_id=item.id ) }}'>Edit</a> |
+								<a href='{{url_for('deleteItem', category_id = category.id, item_id=item.id ) }}'>Delete</a>
+							</article>
+					{% endfor %}
+		</article>
+	{% endif %}
+{% endblock %}

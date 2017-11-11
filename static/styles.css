@@ -1,0 +1,25 @@
+.text-thin {
+  font-weight: 100;
+}
+
+.text-featured {
+  color: #7d97ad;
+}
+
+hr {
+  border: none;
+  height: 3px;
+  background: #7d97ad;
+}
+
+/* http://callmenick.com/post/stylish-css-buttons */
+.btn {
+  font-size: 20px;
+  font-family: 'Lato', sans-serif;
+  border: none;
+  color: #fff;
+  background: #95a5a6;
+  border-radius: 6px;
+  box-shadow: 0 1px #7f8c8d;
+  width: 200px;
+}
